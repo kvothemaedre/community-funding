@@ -1,0 +1,44 @@
+@model IEnumerable<api.Models.Cause>
+
+@{
+    ViewData["Title"] = "GetAllCause";
+    Layout = "~/Views/Shared/_LayoutSignIn.cshtml";
+}
+
+<h1>All the fundraisers</h1>
+<hr />
+<table class="table table-bordered table-hover">
+    <thead class = "thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reason)
+            </th>
+            <th>
+                Target
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Money)
+            </td>
+            <td>
+                @Html.ActionLink("Donate now!", "AddFunderCause", new { id=item.Cid }, new {@class = "border border-success text-success p-2"})<span> | </span>
+                @Html.ActionLink("Click to know more", "CauseDetail", new { id=item.Cid }, new {@class = "border border-primary p-2"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

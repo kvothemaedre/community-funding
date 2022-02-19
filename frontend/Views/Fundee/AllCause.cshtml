@@ -1,0 +1,53 @@
+@model IEnumerable<api.Models.Cause>
+
+@{
+    ViewData["Title"] = "AllCause";
+    Layout = "~/Views/Shared/_LayoutRSignIn.cshtml";
+}
+
+<h1>Your Fundraisers</h1>
+
+<div class="mt-4 mb-4">
+    <p>
+        <a asp-action="CreateCause" class="border border-success mt-4 mb-3 p-3 text-success">Create a new fundraiser!</a>
+    </p>
+</div>
+
+<table class="table table-bordered table-hover">
+    <thead class = "thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cid)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Reason)
+            </th>
+            <th>
+                Target
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Money)
+            </td>
+            <td>
+                <a asp-action="EditCause" asp-route-id = "@item.Cid" class="border border-warning p-2"> Edit </a><span> | </span> 
+                 <a asp-action="DeleteCause" asp-route-id = "@item.Cid" class="border border-danger p-2"> Delete </a>
+                @* @Html.ActionLink("Edit", "EditCause", new { id=item.Cid}) |
+                @Html.ActionLink("Delete", "DeleteCause", new { id=item.Cid }) *@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

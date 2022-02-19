@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "SignIn";
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <ul class="list-unstyled">   
+            <li class="border border-primary mt-4 mb-3 p-3">
+                <a asp-controller="Fundee" asp-action="SignIn" class="nav-item">Sign in and let the community help you! &rarr;</a> 
+            </li>
+            <li class="border border-primary mt-4 mb-3 p-3">
+                <a asp-controller="Funder" asp-action="SignIn" class="nav-item">Sign in and support the cause! &rarr;</a> 
+            </li>
+        </ul>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,29 @@
+
+@{
+    ViewData["Title"] = "AccountSettings";
+    Layout = "~/Views/Shared/_LayoutSignIn.cshtml";
+}
+
+<h1>Account Settings</h1>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+      <div class="heading">
+          <h1 class="display-4">Hi!</h1>
+      </div> 
+    <a asp-action="AllFunderCause" asp-route-id=@ViewBag.CID class="border border-primary mt-5 p-2 ">See your payment history &rarr;</a>
+  </div>
+</div>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 ">Delete your account</h1>
+    <form asp-action="AccountSettings" class="mt-4">
+        <input type="submit" value="Delete" class="btn btn-danger" /> 
+    </form>
+  </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

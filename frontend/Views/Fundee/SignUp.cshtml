@@ -1,0 +1,53 @@
+@model api.Models.FundReceiver
+
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+<h1>Sign up and start a fundraiser!</h1>
+@if (ViewBag.alert)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Holy guacamole!</strong> A user with that userid already exists. Try a new username!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+}
+<hr />
+
+    <div class="d-flex justify-content-center w-100" >
+        <form asp-action="SignUp" class="border border-secondary rounded p-4 w-50">
+            <img  src='@Url.Content("~/user.png")' class = "rounded mx-auto d-block" style="width: 90px;" > 
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Frid" class="control-label">User Id</label>
+                <input asp-for="Frid" type="password" class="form-control" />
+                <span asp-validation-for="Frid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Frname" class="control-label">Name</label>
+                <input asp-for="Frname" class="form-control" />
+                <span asp-validation-for="Frname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label">Password</label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password2" class="control-label">Confirm Password</label>
+                <input asp-for="Password2" class="form-control" />
+                <span asp-validation-for="Password2" class="text-danger"></span>
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <input type="submit" value="Sign Up!" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

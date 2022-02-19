@@ -1,0 +1,11 @@
+
+@{
+    ViewData["Title"] = "SignedIn";
+    Layout = "~/Views/Shared/_LayoutSignIn.cshtml";
+}
+
+<h1>SignedIn</h1>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
